@@ -9,7 +9,7 @@ else
 }
 
 // Code starts here
-
+// Function to verify CC loginID and password
 function login($username, $password){
 	$ftp_server="webhome.cc.iitk.ac.in";
 	//set up basic connection
@@ -25,7 +25,9 @@ function login($username, $password){
 	}
 }
 
+//Checks to see whether user has submitted the survey or not.
 function unique($username){
+	// Your username and password will go here. The password is not 'password'
 	$con = mysqli_connect('localhost','guru','password','survey');
 	if (mysqli_connect_errno())
 	{
@@ -37,11 +39,13 @@ function unique($username){
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_bind_result($stmt, $exists);
 		if(mysqli_stmt_fetch($stmt)==TRUE){
+			// If uid exists
 			mysqli_close($con);
 			return FALSE;
 		}
 		else
 		{
+			//If uid doesn't exist
 			mysqli_close($con);
 			return TRUE;
 		}

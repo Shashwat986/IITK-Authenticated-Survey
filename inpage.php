@@ -6,13 +6,15 @@
 
 <?php
 
-$username = htmlentities($_SESSION["username"]);
-
-if (!isset($_SESSION["auth"]) || $_SESSION["auth"]!="true")
+// If the session variables haven't been set.
+if (!isset($_SESSION["auth"]) || $_SESSION["auth"]!="true" || !isset($_SESSION["username"]))
 {
 	echo "Login Error";
 	exit();
 }
+
+$username = htmlentities($_SESSION["username"]);
+
 echo "Welcome " . $username . ",<br/>";
 
 ?>
